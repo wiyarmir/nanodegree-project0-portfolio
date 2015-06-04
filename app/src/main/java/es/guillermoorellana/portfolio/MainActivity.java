@@ -1,10 +1,12 @@
 package es.guillermoorellana.portfolio;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -38,31 +40,16 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void spotifyToast(View view) {
-        toast("This button will launch my Spotify app!");
-    }
+    public void displayToast(View view) {
 
-    private void toast(String s) {
-        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
-    }
+        Button button = (Button) view;
 
-    public void scoresToast(View view) {
-        toast("This button will launch my Scores app!");
-    }
+        String buttonText = (String) button.getText();
 
-    public void libraryToast(View view) {
-        toast("This button will launch my Library app!");
-    }
+        Context context = getApplicationContext();
+        // open_app would add "Opens the app "
+        CharSequence text = String.format("Opens the %s app!", buttonText);
 
-    public void biggerToast(View view) {
-        toast("This button will launch my Bigger app!");
-    }
-
-    public void readerToast(View view) {
-        toast("This button will launch my Reader app!");
-    }
-
-    public void ownToast(View view) {
-        toast("This button will launch my own app!");
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
     }
 }
